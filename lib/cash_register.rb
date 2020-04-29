@@ -34,7 +34,7 @@ class CashRegister
     else 
       return "There is no discount to apply."
   end
-  
+  @final_tranaction =
   end
   
   def items
