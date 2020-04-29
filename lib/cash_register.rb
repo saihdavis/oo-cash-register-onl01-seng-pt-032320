@@ -1,56 +1,50 @@
 require 'pry'
 class CashRegister
   
-  attr_accessor :total, :discount, :purchases, :prices
-  
-  def initialize(discount = 0)
-    @discount= discount 
-    @total= 0
-    @purchases = []
-  end  
-  
-  def add_item(item, price, quantity = 1)
-    self.prices = [item, price, quantity]
-    @prices = price
-    @total += price * quantity 
-    if quantity > 1 
-      counter = 0 
-    while counter < quantity 
-      @purchases << item 
-      counter += 1 
+attr_accessor :total, :discount
+
+def initialize(discount = 0)
+  @total = 0 
+  @discount = discount
+  @items = []
+end 
+
+def add_item(title, price, quantity = 1)
+  @price = price 
+  @total += price * quantity 
+    if quantity > 1
+      counter = 0
+      while counter < quantity
+        @items << title 
+        counter += 1
+      end 
+    else
+      @items << title 
+    end
+    @last_transaction = price * quantity 
   end
-    
-  else
-      @purchases << item
-  end 
-    
-  def apply_discount
-    if discount > 0
-      #@total += @total * discount/100
-      #percent_left = 100 - discount   
-      percent = (100 - discount.to_f) / 100
-      @total = @total * percent 
-      return "After the discount, the total comes to $#{@total.to_i}."
-    else 
+  
+
+  
+  
+def apply_discount
+    if @discount > 0
+      @discount = (@price * @discount)/100
+      @total -= @discount
+      return "After the discount, the total comes to $#{total}."
+    else
       return "There is no discount to apply."
-  end
-  end
+    end
+  end 
   
-  def items
-    self.purchases
-  end
-  end
+  
+  def items 
+    @items 
+  end 
   
   def void_last_transaction
-    #binding.pry
-    while @total -= @prices do
-      self.purchases.any?
-      return @total
-    if @purchases > @total 
-      return self.total.pop[1,3]
-      
-    
-   end
-end
-end
+  @total = @total - @last_transaction
+
+  end 
+  
 end
