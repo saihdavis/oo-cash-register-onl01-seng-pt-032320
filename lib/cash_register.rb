@@ -34,7 +34,7 @@ class CashRegister
     else 
       return "There is no discount to apply."
   end
-  @final_tranaction =
+  @final_tranaction = price * quantity 
   end
   
   def items
@@ -44,9 +44,7 @@ class CashRegister
   
   def void_last_transaction
     #binding.pry
-    while @total -= @prices do
-      self.purchases.any?
-      return @total
+    
     
       
     
