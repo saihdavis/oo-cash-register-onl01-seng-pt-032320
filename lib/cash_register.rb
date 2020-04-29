@@ -46,8 +46,7 @@ class CashRegister
     while @total -= @prices do
       self.purchases.any?
       return @total
-    if @purchases > @total 
-      return self.total.pop[1,3]
+    
       
     
    end
