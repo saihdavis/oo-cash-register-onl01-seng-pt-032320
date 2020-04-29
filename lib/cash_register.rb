@@ -34,7 +34,7 @@ class CashRegister
     else 
       return "There is no discount to apply."
   end
-  @final_tranaction = price * quantity 
+      @last_tranaction = price * quantity 
   end
   
   def items
@@ -44,7 +44,7 @@ class CashRegister
   
   def void_last_transaction
     #binding.pry
-    @total = @total - @final_tranaction
+    @total = @total - @last_tranaction
     
       
 
